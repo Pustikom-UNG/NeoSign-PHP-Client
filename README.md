@@ -15,8 +15,8 @@ composer require ung/neosign-client
 ```php
 require(__DIR__ . "/vendor/autoload.php");
 
-use GosignClient\Config;
-use GosignClient\SignRequest;
+use NeoSignClient\Config;
+use NeoSignClient\SignRequest;
 
 Config::$isProduction = false;
 Config::$clientKey = "client";
@@ -24,57 +24,42 @@ Config::$secretKey = "secret";
 
 try {
     $params = array(
-        'client_id'       => 'required',
-        'document_id'     => 'required', //Dokumen ID (* disarankan UUID
-        'title'           => 'required', //Judul Dokumen
-        'assign_to'       => 'required', //NIK Penandatangan
-        'document_url'    => 'required', //URL File Dokumen (* Wajib Https
-        'document_status' => 'required', //Status Dokumen Yang dikirim
-        'sign_symbol'     => '*', //Simbol untuk untuk koordinat lokasi tanda tangan (ex. *,@,#,|,^,$
-        'sign_category'   => 'visible', // Kategori Tanda tangan (* Visible atau Invisible
-        'sign_reason'     => 'required', // Alasan Penandatanganan\
-        'sign_type'       => 'image atau qrcode', //Wajib isi jika category "visible"
-        'sign_image'      => 'required', //url image TTE jika type image
-        'custom_image'    => 'true/false',  //Jika menggunakan image custom dengan text
-        'custom_image_text' => 'tipe json', //contoh dibawah
-        'sign_width'      => '100', //ukuran lebar qrcode/image dalam pixel
-        'sign_height'     => '100', //ukuran tinggi qrcode/image dalam pixel
-
+        'client_id'       => 'client_app',
+        'document_id'     => 'uuid', // Dokumen ID (* disarankan UUID)
+        'title'           => 'judul dokumen', // Judul Dokumen
+        'assign_to'       => ['7571*****', '7572*****'], // NIK Penandatangan (* Dalam Array, Isikan Siapa saja yang akan TTE
+        'document_url'    => 'https://www.africau.edu/images/default/sample.pdf', // URL File Dokumen (* Wajib Https)
+        'document_status' => ['1', '2'], // Status Dokumen Yang dikirim (* Jumlah Statusnya dalam array
+        'sign_symbol'     => ['#', '@'], // Simbol untuk untuk koordinat lokasi tanda tangan (ex. *,@,#,|,^,$)
+        'sign_category'   => ['visible', 'invisible'], // Kategori Tanda tangan (* Visible atau Invisible)
+        'page_visualize'   => ['1', '2'], // Lokasi Halaman Berapa untuk visualisasi TTE (* Jika Visible
+        'sign_reason'     => ['Paraf Dekan secara Elektronik', 'Tanda Tangan secara Elektronik'], // Alasan Penandatanganan
+        'sign_type'       => ['image', 'image'], // Wajib isi jika category "visible"
+        'sign_image'      => ['', 'https://www.africau.edu/images/default/sample.png'], // url image TTE jika type image
+        'sign_width'      => ['10', '20'], // ukuran lebar qrcode/image dalam pixel
+        'sign_height'     => ['10', '10'], // ukuran tinggi qrcode/image dalam pixel
     );
+
     $request = SignRequest::create($params);
     echo $request->message;
-}
-catch (\Exception $e) {
+} catch (\Exception $e) {
     echo $e->getMessage();
 }
 
 
-//Contoh Request Custom Image Text
-$custom_text = array(
-            "text" => "Ditetapkan di Gorontalo,/n Pada tanggal {{date}},",
-            "text_size" => 52,
-            "x" => 5,
-            "y" => 50,
-            "align" => "center|left|right",
-            "font" => "arial|times|bookmark",
-            "color" => "#000000",
-        );
 
-$custom_image_text = json_encode($custom_text, true);
-
-[Link testing Image custom](https://gosign.gorontalokota.go.id/try/custom-image)
 
 ```
 
-### Response Callback Dari Gosign (\*Webhook
+### Response Callback Dari NeoSign (\*Webhook
 
-#### Buat Satu Route Callback untuk memproses response setelah Dokumen Berhasil atau ditolak dari Gosign
+#### Buat Satu Route Callback untuk memproses response setelah Dokumen Berhasil atau ditolak dari NeoSign
 
 ```php
 require(__DIR__ . "/vendor/autoload.php");
 
-use GosignClient\Config;
-use GosignClient\SignResponse;
+use NeoSignClient\Config;
+use NeoSignClient\SignResponse;
 
 Config::$isProduction = false;
 Config::$clientKey = "client";
