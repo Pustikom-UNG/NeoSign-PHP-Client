@@ -1,0 +1,24 @@
+{
+    "name": "pustikom/neosign-client",
+    "description": "Library Integrasi NeoSign",
+    "type": "library",
+    "require": {
+        "php": ">=5.4",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "license": "MIT",
+    
+    "autoload": {
+        "psr-4": {
+            "GosignClient\\": "src/"
+          }
+    },
+    "authors": [
+        {
+            "name": "rivaisali",
+            "email": "m.rivai.sali@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
