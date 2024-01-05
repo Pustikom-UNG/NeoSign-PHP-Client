@@ -1,5 +1,5 @@
 {
-    "name": "pustikom/neosign-client",
+    "name": "ung/neosign-client",
     "description": "Library Integrasi NeoSign",
     "type": "library",
     "require": {
