@@ -1,5 +1,4 @@
 <?php
-
 namespace NeoSignClient;
 
 use Exception;
@@ -20,25 +19,20 @@ class SignResponse
         if (!isset($signature) && !isset($client)) {
             throw new Exception(
                 'The SecretKey/ClientKey is null, You need to set the secret-key from Config. Please double-check Config and SecretKey key. ' .
-                    'for the details or contact support at upttik@ung.ac.id if you have any questions.'
+                'for the details or contact support at upttik@ung.ac.id if you have any questions.'
             );
-            return false;
-        }
-
-        // Check if the payload is json or urlencoded.
-        if (strpos($payload, 'payload=') === 0) {
             return false;
         }
 
         if (!$this->validateSignature($client, $signature, $payload)) {
             throw new Exception(
                 'The SecretKey/ClientKey is invalid, as it is an empty string. Please double-check your SecretKey key. ' .
-                    'for the details or contact support at upttik@ung.ac.id if you have any questions.'
+                'for the details or contact support at upttik@ung.ac.id if you have any questions.'
             );
-            return false;
+           return false;
         }
-
-        $this->response = json_decode($payload, true);
+        
+        $this->response = $payload;
         return true;
     }
 
@@ -49,11 +43,13 @@ class SignResponse
 
     protected function validateSignature($client, $signature, $payload)
     {
+        
         $payloadHash = hash_hmac('sha256', $payload, Config::$secretKey);
-        if ($client == Config::$clientKey) {
+        if($client == Config::$clientKey){
             return ($payloadHash == $signature);
-        } else {
+        }else {
             return false;
-        }
+        } 
     }
+
 }
