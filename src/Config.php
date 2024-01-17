@@ -1,9 +1,9 @@
 <?php
 
-namespace NeoSignClient;
+namespace SignClient;
 
 /**
- * NeoSign Configuration
+ * UNGSign Configuration
  */
 class Config
 {
@@ -44,7 +44,7 @@ class Config
     /**
      * Get baseUrl
      * 
-     * @return string NeoSign API URL, depends on $isProduction
+     * @return string UNGSign API URL, depends on $isProduction
      */
     public static function getBaseUrl()
     {
