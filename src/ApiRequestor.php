@@ -1,11 +1,11 @@
 <?php
 
-namespace NeoSignClient;
+namespace SignClient;
 
 use Exception;
 
 /**
- * Send request to NeoSign API
+ * Send request to UNGSign API
  */
 
 class ApiRequestor
@@ -92,7 +92,7 @@ class ApiRequestor
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/json',
                 'Accept: application/json',
-                'User-Agent: neosign-client-php-v1.0.0',
+                'User-Agent: ungsign-client-php-v1.0.0',
                 'Authorization: Basic ' . base64_encode($client_key . ':' . $secret_key)
             ),
             CURLOPT_RETURNTRANSFER => 1
@@ -130,9 +130,9 @@ class ApiRequestor
             }
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             if (isset($result_array->status_code) && $result_array->status_code >= 401 && $result_array->status_code != 407) {
-                throw new Exception('NeoSign API is returning API error. HTTP status code: ' . $result_array->status_code . ' API response: ' . $result, $result_array->status_code);
+                throw new Exception('UNGSign API is returning API error. HTTP status code: ' . $result_array->status_code . ' API response: ' . $result, $result_array->status_code);
             } elseif ($httpCode >= 400) {
-                throw new Exception('NeoSign API is returning API error. HTTP status code: ' . $httpCode . ' API response: ' . $result, $httpCode);
+                throw new Exception('UNGSign API is returning API error. HTTP status code: ' . $httpCode . ' API response: ' . $result, $httpCode);
             } else {
                 return $result_array;
             }
