@@ -1,6 +1,6 @@
 <?php
 
-namespace NeoSignClient;
+namespace SignClient;
 
 use Exception;
 
