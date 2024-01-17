@@ -1,11 +1,11 @@
-# Integrasi Aplikasi dengan NeoSign Universitas Negeri Gorontalo menggunakan PHP
+# Integrasi Aplikasi dengan Sign Universitas Negeri Gorontalo menggunakan PHP
 
 ## Instalasi
 
 Instalasi menggunakan composer :
 
 ```
-composer require ung/neosign-client
+composer require ung/sign-client
 ```
 
 ## Cara Menggunakan
@@ -15,8 +15,8 @@ composer require ung/neosign-client
 ```php
 require(__DIR__ . "/vendor/autoload.php");
 
-use NeoSignClient\Config;
-use NeoSignClient\SignRequest;
+use SignClient\Config;
+use SignClient\SignRequest;
 
 Config::$isProduction = false;
 Config::$clientKey = "client";
@@ -58,8 +58,8 @@ try {
 ```php
 require(__DIR__ . "/vendor/autoload.php");
 
-use NeoSignClient\Config;
-use NeoSignClient\SignResponse;
+use SignClient\Config;
+use SignClient\SignResponse;
 
 Config::$isProduction = false;
 Config::$clientKey = "client";
