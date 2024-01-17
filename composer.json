@@ -1,6 +1,6 @@
 {
-    "name": "ung/neosign-client",
-    "description": "Library Integrasi NeoSign",
+    "name": "ung/sign-client",
+    "description": "Library Integrasi UNG Sign",
     "type": "library",
     "require": {
         "php": ">=5.4",
