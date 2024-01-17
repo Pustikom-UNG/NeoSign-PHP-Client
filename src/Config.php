@@ -37,8 +37,8 @@ class Config
      */
     public static $curlOptions = array();
 
-    const DEVELOPMENT_BASE_URL = 'https://neosign-dev.tik.ung.ac.id';
-    const PRODUCTION_BASE_URL = 'https://neosign.ung.ac.id';
+    const DEVELOPMENT_BASE_URL = 'https://dev.tik.ung.ac.id:8083';
+    const PRODUCTION_BASE_URL = 'https://api.sign.ung.ac.id';
 
 
     /**
