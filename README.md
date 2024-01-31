@@ -26,12 +26,13 @@ try {
     $params = array(
         'client_id'       => 'client_app',
         'document_id'     => 'uuid', // Dokumen ID (* disarankan UUID)
+        'category'        => 'ijazah , transkrip, sertifikat, surat',
         'title'           => 'judul dokumen', // Judul Dokumen
         'assign_to'       => ['7571*****', '7572*****'], // NIK Penandatangan (* Dalam Array, Isikan Siapa saja yang akan TTE
         'document_url'    => 'https://www.africau.edu/images/default/sample.pdf', // URL File Dokumen (* Wajib Https)
         'document_status' => ['1', '2'], // Status Dokumen Yang dikirim (* Jumlah Statusnya dalam array
         'sign_symbol'     => ['#', '@'], // Simbol untuk untuk koordinat lokasi tanda tangan (ex. *,@,#,|,^,$)
-        'sign_category'   => ['visible', 'invisible'], // Kategori Tanda tangan (* Visible atau Invisible)
+        'sign_category'   => ['visible', 'invisible'], // Kategori Tanda tangan (* Visible atau Invisible
         'page_visualize'   => ['1', '2'], // Lokasi Halaman Berapa untuk visualisasi TTE (* Jika Visible
         'sign_reason'     => ['Paraf Dekan secara Elektronik', 'Tanda Tangan secara Elektronik'], // Alasan Penandatanganan
         'sign_type'       => ['image', 'image'], // Wajib isi jika category "visible"
